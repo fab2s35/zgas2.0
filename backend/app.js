@@ -13,28 +13,39 @@ import registerClient from "./src/routes/registerClients.js";
 import passwordRecoveryRoutes from "./src/routes/passwordRecovery.js";
 import blogRoutes from "./src/routes/blog.js";
 import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
+import cors from "cors"
+
 
 // Creo una constante que es igual a la libreria que importé
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    // Permitir envío de cookies y credenciales
+    credentials: true
+  })
+);
+
 //Que acepte datos en json
 app.use(express.json());
 //Que acepte cookies en postman
 app.use(cookieParser());
-// Definir las rutas de las funciones que tendrá la página web
-app.use("/api/products", validateAuthToken(["employee", "admin"]), productsRoutes);
+// Definir las rutas de las funciones que tendr á la página web
+app.use("/api/products",validateAuthToken([ "Admin", "employee"]), productsRoutes);
 app.use("/api/customers", customersRoutes);
-app.use("/api/employee", employeeRoutes);
+app.use("/api/employee",  validateAuthToken([ "Admin", "employee"]), employeeRoutes);
 app.use("/api/branches", branchesRoutes);
 app.use("/api/reviews", reviewRoutes);
 
-app.use("/api/registerEmployees", registerEmployesRoutes);
+app.use("/api/registerEmployees",validateAuthToken([ "Admin"]), registerEmployesRoutes);
 app.use("/api/login", loginRoute);
 app.use("/api/logout", logoutRoute);
 
 app.use("/api/registerClients", registerClient);
 app.use("/api/passwordRecovery", passwordRecoveryRoutes);
 
-app.use("/api/blog", validateAuthToken(["employee"]), blogRoutes);
+app.use("/api/blog", blogRoutes);
 
 // Exporto la constante para poder usar express en otros archivos
 export default app;

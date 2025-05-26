@@ -15,8 +15,6 @@ export const validateAuthToken = (allowedUserTypes = []) => {
       //3-Extraemos la información del token
       const decoded = jsonwebtoken.verify(authToken, config.JWT.secret);
 
-      req.user = decoded;
-
       //4- Verificar el tipo de usuario si puede ingresar o no
       if (!allowedUserTypes.includes(decoded.userType)) {
         return res.json({ message: "Access denied" });
