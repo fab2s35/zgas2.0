@@ -12,6 +12,7 @@ import logoutRoute from "./src/routes/logout.js";
 import registerClient from "./src/routes/registerClients.js";
 import passwordRecoveryRoutes from "./src/routes/passwordRecovery.js";
 import blogRoutes from "./src/routes/blog.js";
+import faqsRoutes from "./src/routes/faqs.js"
 import { validateAuthToken } from "./src/middlewares/validateAuthToken.js";
 import cors from "cors"
 
@@ -46,6 +47,7 @@ app.use("/api/registerClients", registerClient);
 app.use("/api/passwordRecovery", passwordRecoveryRoutes);
 
 app.use("/api/blog", blogRoutes);
+app.use("/api/faqs", faqsRoutes);
 
 // Exporto la constante para poder usar express en otros archivos
 export default app;
