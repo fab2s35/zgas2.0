@@ -1,0 +1,519 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Simple Inventory API",
+    "description": "Esta es mi api, es para Zgas",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/ricaldone-a9b/Zgas/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "admins",
+      "description": "Secured Admin-only calls"
+    },
+    {
+      "name": "developers",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "paths": {
+    "/api/products": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Insert products",
+        "description": "Un método para poder ver todos los products que hayan",
+        "operationId": "get-api-products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Update products",
+        "description": "Aqui este metodo podemos actualizar los datos de mi producto",
+        "operationId": "put-api-products",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_products_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Select products",
+        "description": "Añade un producto nuevo",
+        "operationId": "post-api-products",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_products_body_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Delete products",
+        "description": "En este metofdo se puede borrar un productos   ",
+        "operationId": "delete-api-products",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/brand": {
+      "get": {
+        "tags": [
+          "Brand"
+        ],
+        "summary": "Select brands",
+        "description": "a desc",
+        "operationId": "get-brand",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Brand"
+        ],
+        "summary": "Update brand",
+        "description": "Actualiza las brands",
+        "operationId": "put-brand",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_brand_body"
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "string",
+                    "year": "2019-08-24",
+                    "slogan": "string",
+                    "image": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Brand"
+        ],
+        "summary": "Insert brand",
+        "description": "a desc",
+        "operationId": "post-brand",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_brand_body_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Brand"
+        ],
+        "summary": "Delete brand",
+        "description": "Un metodo para eliminar brands",
+        "operationId": "delete-brand",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/customers": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Select customers",
+        "description": "El método para ver los clientes que hay si",
+        "operationId": "get-api-customers",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Update customers",
+        "operationId": "put-api-customers",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_customers_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Delete customer",
+        "description": "UN método para eliminar un cliente",
+        "operationId": "delete-api-customers",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Manufacturer": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "ACME Corporation"
+          },
+          "homePage": {
+            "type": "string",
+            "format": "url",
+            "example": "https://www.acme-corp.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "408-867-5309"
+          }
+        }
+      },
+      "api_products_body": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ozbhtdn9bgkp8"
+            }
+          },
+          "description": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "uegfax5ozqgv5"
+            }
+          },
+          "price": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "2aah5k09a7bg0"
+            }
+          },
+          "stock": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "fcvsgkvqxbngl"
+            }
+          }
+        }
+      },
+      "api_products_body_1": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xpirai7syhm7v"
+            }
+          },
+          "description": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "zj5p5p5sjmkka"
+            }
+          },
+          "price": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "63t9sxyu5udea"
+            }
+          },
+          "stock": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "6q8gaq8e0k5nw"
+            }
+          }
+        }
+      },
+      "api_brand_body": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "r3ekokticbr9c"
+            }
+          },
+          "year": {
+            "type": "string",
+            "format": "date",
+            "x-stoplight": {
+              "id": "jqg7fhzm989br"
+            }
+          },
+          "slogan": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "zfqyecn1gkjhc"
+            }
+          },
+          "image": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "fft84ptam57s1"
+            }
+          }
+        }
+      },
+      "api_brand_body_1": {
+        "type": "object",
+        "properties": {
+          "": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "afkljn5ktw1xz"
+            }
+          },
+          "year": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "kqkage0o0r8sk"
+            }
+          },
+          "slogan": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "n397pa4pghuu0"
+            }
+          }
+        }
+      },
+      "api_customers_body": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ifobqq000hkvf"
+            }
+          },
+          "lastName": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pksn23p8qmimp"
+            }
+          },
+          "bithday": {
+            "type": "string",
+            "format": "date",
+            "x-stoplight": {
+              "id": "qj09epgzhct0x"
+            }
+          },
+          "email": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9iui8yjko0cma"
+            }
+          },
+          "password": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "x47yipc15g29m"
+            }
+          },
+          "telephone": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xolm7m8mcsigu"
+            }
+          },
+          "dui": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "t63m49upubqig"
+            }
+          },
+          "isVerified": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "5pfa074tjzlag"
+            }
+          }
+        }
+      }
+    }
+  }
+}
